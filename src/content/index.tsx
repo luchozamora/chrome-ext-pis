@@ -1,14 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
-import App from "./components/App";
+import store from "./store";
+import ContentButton from "./components/ContentButton";
+import ContentDrawer from "./components/ContentDrawer";
 
-const app = document.createElement("div");
-app.id = "open-fing-plus";
+const extButton = document.createElement("div");
+extButton.id = "open-fing-plus-button";
+
+const extDrawer = document.createElement("div");
+extDrawer.id = "open-fing-plus-drawer";
 
 const openFingRoot = document.getElementById("root");
 if (openFingRoot) {
-  openFingRoot.prepend(app);
+  openFingRoot.style.flexDirection = "row";
+  openFingRoot.prepend(extButton);
+  openFingRoot.appendChild(extDrawer);
 }
 
-ReactDOM.render(<App />, document.getElementById("open-fing-plus"));
+ReactDOM.render(
+  <Provider store={store}>
+    <ContentButton />
+  </Provider>,
+  document.getElementById("open-fing-plus-button")
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ContentDrawer />
+  </Provider>,
+  document.getElementById("open-fing-plus-drawer")
+);
