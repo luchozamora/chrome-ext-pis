@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import { ButtonContainer } from "./styles";
@@ -19,7 +19,7 @@ const ContentButton = ({
 
   return (
     <ButtonContainer onClick={toggleDrawer}>
-      <p>{isDrawerOpen ? "-" : "+"}</p>
+      <p>{isDrawerOpen ? "---" : "+"}</p>
     </ButtonContainer>
   );
 };
